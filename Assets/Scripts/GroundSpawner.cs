@@ -8,6 +8,7 @@ public class GroundSpawner : MonoBehaviour
 
     [SerializeField] int NumberInitialPlatforms = 1;
     [SerializeField] GameObject[] platforms;
+
     [SerializeField] float platformsSpeed = 1f;
 
     // InicialPlatformsPosInZ = 16.91
@@ -29,25 +30,25 @@ public class GroundSpawner : MonoBehaviour
         SetSpawnRate();
     }
 
-    private IEnumerator SpawnPlatform()
-    {
-        yield return new WaitForSeconds(SpawnRate);
-        Vector3 Pos = new Vector3(0, 0, inicialPlatformsPosInZ - 7);
-        GameObject platform = Instantiate(platforms[Random.Range(0, platforms.Length)], Pos, Quaternion.identity);
-        platform.transform.SetParent(platformsParent);
-        StartCoroutine(SpawnPlatform());
-    }
-
-    private void SpawnInitialPlatforms() 
+    private void SpawnInitialPlatforms()
     {
         Vector3 Pos = new Vector3(0, 0, inicialPlatformsPosInZ);
-        for (int i = 0; i < NumberInitialPlatforms; i++) 
+        for (int i = 0; i < NumberInitialPlatforms; i++)
         {
             GameObject platform = Instantiate(platforms[Random.Range(0, platforms.Length)], Pos, Quaternion.identity);
             platform.transform.SetParent(platformsParent);
             inicialPlatformsPosInZ += 16.91f;
             Pos = new Vector3(0, 0, inicialPlatformsPosInZ);
         }
+    }
+
+    private IEnumerator SpawnPlatform()
+    {
+        yield return new WaitForSeconds(SpawnRate);
+        Vector3 Pos = new Vector3(0, 0, inicialPlatformsPosInZ - 16.91f);
+        GameObject platform = Instantiate(platforms[Random.Range(0, platforms.Length)], Pos, Quaternion.identity);
+        platform.transform.SetParent(platformsParent);
+        StartCoroutine(SpawnPlatform());
     }
 
     private void SetSpawnRate() 
