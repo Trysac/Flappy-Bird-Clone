@@ -27,7 +27,15 @@ public class GroundSpawner : MonoBehaviour
 
     void Update()
     {
-        SetSpawnRate();
+        if (GameManager.isGameActive.Equals(true)) 
+        {
+            SetSpawnRate();
+        }
+        else
+        {
+            StopCoroutine(SpawnPlatform());
+            Ground.Speed = 0;
+        }
     }
 
     private void SpawnInitialPlatforms()
