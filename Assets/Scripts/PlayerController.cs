@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float flyForce = 1f;
-
-    bool isAlive;
+    
+    const float MaximumFlightHeight = 4.50f;
+    
+    static bool isAlive;
 
     Rigidbody myRigidbody;
 
@@ -21,12 +23,17 @@ public class PlayerController : MonoBehaviour
         if (isAlive) 
         {
             Fly();
+
+            if (transform.position.y > MaximumFlightHeight) 
+            {
+                transform.position = new Vector3(transform.position.x, MaximumFlightHeight, transform.position.z);
+            }
         }
     }
 
     public void Fly() 
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) 
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && transform.position.y < MaximumFlightHeight) 
         {
             myRigidbody.AddForce(Vector3.up * flyForce, ForceMode.Impulse);
         }
