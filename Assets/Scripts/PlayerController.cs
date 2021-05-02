@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     
     const float MaximumFlightHeight = 4.50f;
     
-    static bool isAlive;
+    public static bool isAlive;
 
     Rigidbody myRigidbody;
 
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (isAlive) 
+        if (isAlive && !UIManager.IsPause) 
         {
             Fly();
 
