@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SkillsManager : MonoBehaviour
 {
+    [Header("General Parameters")]
+    [SerializeField] GameObject SkillOriginPoint;
+
     [Header("Skills Effects Prefabs")]
     [SerializeField] GameObject FlamethrowerEffectPrefab;
     [SerializeField] GameObject FireBallEffectPrefab;
@@ -103,11 +106,24 @@ public class SkillsManager : MonoBehaviour
     }
     private void FlamethrowerSkill() 
     {
-        print("FlamethrowerSkill");
+        Myanimator.SetTrigger("Flamethrower");
+        StartCoroutine(InstatiateSkill(FlamethrowerEffectPrefab, 0.9f));
     }
     private void FireBallSkill() 
     {
         print("FireBallSkill");
+    }
+
+    private IEnumerator InstatiateSkill(GameObject skillPrefb, float waitToActive = 0.5f) 
+    {
+        PlayerController.GravityState = false;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        yield return new WaitForSeconds(waitToActive);
+        GameObject skill = Instantiate(skillPrefb, SkillOriginPoint.transform.position, Quaternion.identity);
+        skill.transform.SetParent(SkillOriginPoint.transform);
+        Destroy(skill, skill.GetComponent<Animation>().clip.length + 0.1f);
+        yield return new WaitForSeconds(skill.GetComponent<Animation>().clip.length);
+        PlayerController.GravityState = true;
     }
 
 }
