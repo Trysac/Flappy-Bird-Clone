@@ -19,26 +19,26 @@ public class GroundSpawner : MonoBehaviour
 
     void Start()
     {
-        SpawnInitialPlatforms();
-
         SetSpawnRate();
-        StartCoroutine(SpawnPlatform());
     }
 
     void Update()
     {
-        if (GameManager.isGameActive.Equals(true)) 
-        {
-            SetSpawnRate();
-        }
-        else
-        {
-            StopCoroutine(SpawnPlatform());
-            Ground.Speed = 0;
-        }
+        if (GameManager.IsGameStarted) 
+        { 
+            if (GameManager.isGameActive.Equals(true)) 
+            {
+                SetSpawnRate();
+            }
+            else
+            {
+                StopCoroutine(SpawnPlatform());
+                Ground.Speed = 0;
+            }
+        }   
     }
 
-    private void SpawnInitialPlatforms()
+    public void SpawnInitialPlatforms()
     {
         Vector3 Pos = new Vector3(0, 0, inicialPlatformsPosInZ);
         for (int i = 0; i < NumberInitialPlatforms; i++)
@@ -48,6 +48,7 @@ public class GroundSpawner : MonoBehaviour
             inicialPlatformsPosInZ += 16.91f;
             Pos = new Vector3(0, 0, inicialPlatformsPosInZ);
         }
+        StartCoroutine(SpawnPlatform());
     }
 
     private IEnumerator SpawnPlatform()
