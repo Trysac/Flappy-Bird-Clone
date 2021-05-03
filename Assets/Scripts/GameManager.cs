@@ -19,13 +19,26 @@ public class GameManager : MonoBehaviour
     [Tooltip("More that 1.40 it feels to exaggerated, and it´s almost imposible to play")]
     [SerializeField] float limitTimeScaleValue = 1.4f;
 
+    [SerializeField] int CountDownTime = 3;
+
     public static bool isGameActive { get; set; }
     public static int Score { get; set; }
+    public static bool IsGameStarted { get; set; }
 
     void Start()
     {
         Score = 0;
         isGameActive = true;
+        IsGameStarted = false;
+        StartCoroutine(StartGame());
+    }
+
+    public IEnumerator StartGame() 
+    {
+        yield return new WaitForSeconds(CountDownTime);
+        IsGameStarted = true;
+        PlayerController.GravityState = true;
+        FindObjectOfType<GroundSpawner>().SpawnInitialPlatforms();
         StartCoroutine(AddScoreForFlying());
         StartCoroutine(IncreseDificulty());
     }

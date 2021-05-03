@@ -13,7 +13,11 @@ public class Ground : MonoBehaviour
 
     void Update()
     {
-        Move();
+        if (GameManager.IsGameStarted) 
+        { 
+            Move();
+        }
+        
     }
 
     private void Move()

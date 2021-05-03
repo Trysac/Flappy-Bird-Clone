@@ -10,25 +10,37 @@ public class PlayerController : MonoBehaviour
     
     public static bool isAlive;
 
+    public static bool GravityState;
+
     Rigidbody myRigidbody;
 
     void Start()
     {
         isAlive = true;
+
         myRigidbody = GetComponent<Rigidbody>();
+        myRigidbody.useGravity = GravityState;
     }
 
     void Update()
     {
-        if (isAlive && !UIManager.IsPause) 
+        if (GameManager.IsGameStarted) 
         {
-            Fly();
+            myRigidbody.useGravity = GravityState;
 
-            if (transform.position.y > MaximumFlightHeight) 
+            if (isAlive && !UIManager.IsPause) 
             {
-                transform.position = new Vector3(transform.position.x, MaximumFlightHeight, transform.position.z);
+                if (GravityState) 
+                { 
+                    Fly();
+                }
+                
+                if (transform.position.y > MaximumFlightHeight) 
+                {
+                    transform.position = new Vector3(transform.position.x, MaximumFlightHeight, transform.position.z);
+                }
             }
-        }
+        }     
     }
 
     public void Fly() 
@@ -36,7 +48,7 @@ public class PlayerController : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && transform.position.y < MaximumFlightHeight) 
         {
             myRigidbody.AddForce(Vector3.up * flyForce, ForceMode.Impulse);
-        }
-        
+        }      
     }
+
 }
