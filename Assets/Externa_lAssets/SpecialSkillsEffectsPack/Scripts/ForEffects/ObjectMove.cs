@@ -34,7 +34,7 @@ public class ObjectMove : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, MaxLength))
             {
-                if (Time.time > m_time2 + HitDelay)
+                if (Time.time > HitDelay)
                 {
                     m_time2 = Time.time;
                     HitObj(hit);
@@ -47,6 +47,10 @@ public class ObjectMove : MonoBehaviour
     {
         m_makedObject = Instantiate(m_hitObject, hit.point, Quaternion.LookRotation(hit.normal)).gameObject;
         Destroy(m_makedObject, DestroyTime2);
+        if (hit.collider.gameObject.tag.Equals("Obstacule")) 
+        {
+            Destroy(gameObject, 0.1f);
+        }
     }
 
 }
