@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
     [Tooltip("Depend on how long do you want to make every game loop last for the player")]
     [SerializeField] float timeBetweenTimeScaleIncreses = 40f;
 
+    [Range(1f, 1.4f)]
+    [Tooltip("More that 1.40 it feels to exaggerated, and it´s almost imposible to play")]
+    [SerializeField] float limitTimeScaleValue = 1.4f;
+
     public static bool isGameActive { get; set; }
     public static int Score { get; set; }
 
@@ -51,7 +55,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator IncreseDificulty()
     {
         yield return new WaitForSeconds(timeBetweenTimeScaleIncreses);
-        if ((Time.timeScale < 1.39)) 
+        if ((Time.timeScale < limitTimeScaleValue)) 
         {
             pointToAdd += 2;
             Time.timeScale += IncreseInScaleTime;
