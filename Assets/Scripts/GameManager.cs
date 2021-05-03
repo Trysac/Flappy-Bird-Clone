@@ -90,4 +90,5 @@ public class GameManager : MonoBehaviour
     {
         Score += pointsToAdd;
     }
+
 }
