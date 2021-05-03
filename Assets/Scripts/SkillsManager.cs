@@ -107,14 +107,15 @@ public class SkillsManager : MonoBehaviour
     private void FlamethrowerSkill() 
     {
         Myanimator.SetTrigger("Flamethrower");
-        StartCoroutine(InstatiateSkill(FlamethrowerEffectPrefab, 0.9f));
+        StartCoroutine(InstatiateSkillWithAnimation(FlamethrowerEffectPrefab, 0.9f));
     }
     private void FireBallSkill() 
     {
-        print("FireBallSkill");
+        Myanimator.SetTrigger("FireBall");
+        StartCoroutine(InstatiateSkillWithoutAnimation(FireBallEffectPrefab,1.28f, 0.8f));
     }
 
-    private IEnumerator InstatiateSkill(GameObject skillPrefb, float waitToActive = 0.5f) 
+    private IEnumerator InstatiateSkillWithAnimation(GameObject skillPrefb, float waitToActive = 0.5f) 
     {
         PlayerController.GravityState = false;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -125,5 +126,19 @@ public class SkillsManager : MonoBehaviour
         yield return new WaitForSeconds(skill.GetComponent<Animation>().clip.length);
         PlayerController.GravityState = true;
     }
+
+    private IEnumerator InstatiateSkillWithoutAnimation(GameObject skillPrefb, float waitToActive = 0.5f, float delayToDestroitObject = 1f)
+    {
+        PlayerController.GravityState = false;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        yield return new WaitForSeconds(waitToActive);
+        GameObject skill = Instantiate(skillPrefb, SkillOriginPoint.transform.position, Quaternion.identity);
+        skill.transform.SetParent(SkillOriginPoint.transform);
+        Destroy(skill, delayToDestroitObject + 0.1f);
+        yield return new WaitForSeconds(delayToDestroitObject);
+        PlayerController.GravityState = true;
+    }
+
+
 
 }
