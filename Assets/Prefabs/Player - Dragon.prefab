@@ -540,6 +540,7 @@ GameObject:
   - component: {fileID: 3905283010139406652}
   - component: {fileID: 3905283010139406655}
   - component: {fileID: 3905283010139406654}
+  - component: {fileID: 8804275759730917257}
   m_Layer: 7
   m_Name: Player - Dragon
   m_TagString: Player
@@ -593,8 +594,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.89
-  m_Center: {x: 0, y: 1.43, z: 0.41}
+  m_Radius: 0.85
+  m_Center: {x: 0, y: 1.37, z: 0.38}
 --- !u!54 &3905283010139406655
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -624,6 +625,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flyForce: 4
+--- !u!114 &8804275759730917257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3905283010139406649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc4c3fe1585f861458a24b9651a6a5f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3905289059901304535
 GameObject:
   m_ObjectHideFlags: 0

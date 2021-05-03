@@ -24,12 +24,14 @@ public class GameManager : MonoBehaviour
     public static bool isGameActive { get; set; }
     public static int Score { get; set; }
     public static bool IsGameStarted { get; set; }
+    public static int InitialCountDownTime { get; set; }
 
     void Start()
     {
         Score = 0;
         isGameActive = true;
         IsGameStarted = false;
+        InitialCountDownTime = CountDownTime;
         StartCoroutine(StartGame());
     }
 
