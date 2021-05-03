@@ -21,9 +21,18 @@ public class SkillsManager : MonoBehaviour
     private float FlamethrowerSkillTimer;
     private float FireBallSkillTimer;
 
-    private bool isBiteSkillAvailable;
-    private bool isFlamethrowerSkillAvailable;
-    private bool isFireBallSkillAvailable;
+    public static bool isBiteSkillAvailable;
+    public static bool isFlamethrowerSkillAvailable;
+    public static bool isFireBallSkillAvailable;
+
+    /// <summary>
+    /// Variables To Activated Skills With the UI Buttons
+    /// </summary>
+
+    public static bool UI_ACtivateBiteSkill;
+    public static bool UI_ACtivateFireBallSkill;
+    public static bool UI_ACtivateFlamethrowerSkill;
+
 
     Animator Myanimator;
 
@@ -32,6 +41,10 @@ public class SkillsManager : MonoBehaviour
         isBiteSkillAvailable = true;
         isFlamethrowerSkillAvailable = true;
         isFireBallSkillAvailable = true;
+
+        //UI_ACtivateBiteSkill = false;
+        //UI_ACtivateFireBallSkill = false;
+        //UI_ACtivateFlamethrowerSkill = false;
 
         BiteSkillTimer = 0;
         FlamethrowerSkillTimer = 0;
@@ -84,20 +97,23 @@ public class SkillsManager : MonoBehaviour
 
     private void ManageSkillsImputs() 
     {
-        if (Input.GetKeyDown(KeyCode.Q) && isBiteSkillAvailable)
+        if ((Input.GetKeyDown(KeyCode.Q) /*|| UI_ACtivateBiteSkill*/) && isBiteSkillAvailable)
         {
-            BiteSkill();
             isBiteSkillAvailable = false;
+            UI_ACtivateBiteSkill = false;
+            BiteSkill();
         }
-        else if (Input.GetKeyDown(KeyCode.W) && isFlamethrowerSkillAvailable)
+        else if ((Input.GetKeyDown(KeyCode.W) /*|| UI_ACtivateFlamethrowerSkill*/) && isFlamethrowerSkillAvailable)
         {
-            FlamethrowerSkill();
             isFlamethrowerSkillAvailable = false;
+            UI_ACtivateFlamethrowerSkill = false;
+            FlamethrowerSkill();
         }
-        else if (Input.GetKeyDown(KeyCode.E) && isFireBallSkillAvailable) 
-        {
-            FireBallSkill();
+        else if ((Input.GetKeyDown(KeyCode.E) /*|| UI_ACtivateFireBallSkill*/) && isFireBallSkillAvailable) 
+        {           
             isFireBallSkillAvailable = false;
+            UI_ACtivateFlamethrowerSkill = false;
+            FireBallSkill();
         }
     }
 
