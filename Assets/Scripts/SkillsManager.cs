@@ -10,6 +10,7 @@ public class SkillsManager : MonoBehaviour
     [Header("Skills Effects Prefabs")]
     [SerializeField] GameObject FlamethrowerEffectPrefab;
     [SerializeField] GameObject FireBallEffectPrefab;
+    [SerializeField] GameObject BiteEffectPrefab;
 
     [Header("Skills Colldowns")]
     [SerializeField] float BiteCooldown = 1;
@@ -102,7 +103,8 @@ public class SkillsManager : MonoBehaviour
 
     private void BiteSkill() 
     {
-        print("BiteSkill");
+        Myanimator.SetTrigger("Bite");
+        StartCoroutine(InstatiateSkillWithoutAnimation(BiteEffectPrefab, 0f));
     }
     private void FlamethrowerSkill() 
     {
