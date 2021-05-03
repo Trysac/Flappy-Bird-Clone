@@ -18,8 +18,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject gameOverPanel;
     [SerializeField] GameObject pausePanel;
 
-    [Header("Buttons")]
+    [Header("General Buttons")]
     [SerializeField] Button pauseButton;
+
+    [Header("Skills Buttons")]
+    [SerializeField] Button BiteSkill;
+    [SerializeField] Button FireballSkill;
+    [SerializeField] Button FlamethrowerSkill;
+    [SerializeField] Button SpringSkill;
 
     public static bool IsPause { get; set; }
 
@@ -32,7 +38,50 @@ public class UIManager : MonoBehaviour
     {
         Score.text = GameManager.Score.ToString();
         Coins.text = 0.ToString();
+        //ActivateSkillsButtons();
     }
+
+    /// <summary>
+    /// For The Skills Buttons
+    /// </summary>
+    /// 
+
+    //private void ActivateSkillsButtons()
+    //{
+    //    if (SkillsManager.isBiteSkillAvailable) { BiteSkill.enabled = true; }
+    //    else { BiteSkill.enabled = false; }
+
+    //    if (SkillsManager.isFlamethrowerSkillAvailable) { FlamethrowerSkill.enabled = true; }
+    //    else { FlamethrowerSkill.enabled = false; }
+
+    //    if (SkillsManager.isFireBallSkillAvailable) { FireballSkill.enabled = true; }
+    //    else { FireballSkill.enabled = false;}
+    //}
+
+    //public void ActivateBiteSkill()
+    //{
+    //    SkillsManager.UI_ACtivateBiteSkill = true;
+    //}
+
+    //public void ActivateFlamethrowerSkill()
+    //{
+    //    SkillsManager.UI_ACtivateFlamethrowerSkill = true;
+    //}
+
+    //public void ActivateFireBallSkill() 
+    //{
+    //    SkillsManager.UI_ACtivateFireBallSkill = true;
+    //}
+
+    //public void ActivateSprintSkill() 
+    //{
+    //    print("Sprint");
+    //}
+
+    /// <summary>
+    /// End Skills Buttons
+    /// </summary>
+
 
     public void PauseGame()
     {
