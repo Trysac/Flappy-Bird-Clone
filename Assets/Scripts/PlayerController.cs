@@ -13,13 +13,18 @@ public class PlayerController : MonoBehaviour
     public static bool GravityState;
 
     Rigidbody myRigidbody;
+    Animator Myanimator;
 
     void Start()
     {
         isAlive = true;
 
+        Myanimator = GetComponent<Animator>();
+
         myRigidbody = GetComponent<Rigidbody>();
         myRigidbody.useGravity = GravityState;
+
+        StartCoroutine(StartFlyBattleState());
     }
 
     void Update()
@@ -41,6 +46,12 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }     
+    }
+
+    private IEnumerator StartFlyBattleState()
+    {
+        yield return new WaitForSeconds(GameManager.InitialCountDownTime);
+        Myanimator.SetBool("Battle",true);
     }
 
     public void Fly() 

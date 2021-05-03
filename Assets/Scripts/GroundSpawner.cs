@@ -65,4 +65,5 @@ public class GroundSpawner : MonoBehaviour
         Ground.Speed = platformsSpeed;
         SpawnRate = (PlatformsSize / Ground.Speed) - 0.1f;
     }
+
 }
