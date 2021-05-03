@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        Score.text = 0.ToString();
+        Score.text = GameManager.Score.ToString();
         Coins.text = 0.ToString();
     }
 

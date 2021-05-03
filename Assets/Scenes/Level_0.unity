@@ -648,6 +648,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df2ba282275ac2a4ba6f54a9b5ce4310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IncreseInScaleTime: 0.1
+  pointToAdd: 1
+  timeBetweenTimeScaleIncreses: 40
 --- !u!4 &2121067219
 Transform:
   m_ObjectHideFlags: 0
