@@ -403,7 +403,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1a9a6be24745266448c48bc4ef7d8d4b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1150,6 +1150,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.248
       objectReference: {fileID: 0}
+    - target: {fileID: 8804275759730917257, guid: 937b941833aa49e49bd58694d4965675, type: 3}
+      propertyPath: BiteEffectPrefab
+      value: 
+      objectReference: {fileID: 1750006577700651688, guid: 0bc04abdad58a8c4da0ab64e48872703, type: 3}
     - target: {fileID: 8804275759730917257, guid: 937b941833aa49e49bd58694d4965675, type: 3}
       propertyPath: FireBallEffectPrefab
       value: 
