@@ -52,6 +52,11 @@ MonoBehaviour:
   - {fileID: 1862915100115340161, guid: 828972aff3a98964c805cfcdb8a3f4cb, type: 3}
   - {fileID: 1862915100115340161, guid: 3af0d236adca7ad4eb5c28e9f1da9c71, type: 3}
   - {fileID: 1862915100115340161, guid: 3369bdd5bb7a82442b2e3dc3a3f57e2c, type: 3}
+  - {fileID: 1862915100115340161, guid: 0a68c9e74359eda4f92d3b15d2c27c9a, type: 3}
+  - {fileID: 1862915100115340161, guid: 398dcc4a4eab7c14d8fc464c76dcbc66, type: 3}
+  - {fileID: 1862915100115340161, guid: eb4bfbe3a7bc2534bbc4c40df2192571, type: 3}
+  - {fileID: 1862915100115340161, guid: 99bfad9c571299844ae9ab5df4effc52, type: 3}
+  - {fileID: 1862915100115340161, guid: 9ae4d3a3c66b7bf45945c0c2c9fe8b4a, type: 3}
   platformsSpeed: 1
 --- !u!1 &7529669085874469379
 GameObject:

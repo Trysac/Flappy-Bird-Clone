@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Obstacule
   - Enemy
+  - Lava
+  - Damage
   layers:
   - Default
   - TransparentFX
