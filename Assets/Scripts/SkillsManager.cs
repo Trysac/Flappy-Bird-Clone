@@ -40,8 +40,12 @@ public class SkillsManager : MonoBehaviour
 
     Animator Myanimator;
 
+    private bool IsAnyAnimationPlaying;
+
     void Start()
     {
+        IsAnyAnimationPlaying = false;
+            
         isBiteSkillAvailable = true;
         isFlamethrowerSkillAvailable = true;
         isFireBallSkillAvailable = true;
@@ -114,28 +118,34 @@ public class SkillsManager : MonoBehaviour
 
     private void ManageSkillsImputs() 
     {
+        if (IsAnyAnimationPlaying) { return; }
+
         if ((Input.GetKeyDown(KeyCode.Q) /*|| UI_ACtivateBiteSkill*/) && isBiteSkillAvailable)
         {
             isBiteSkillAvailable = false;
             UI_ACtivateBiteSkill = false;
+            IsAnyAnimationPlaying = true;
             BiteSkill();
         }
         else if ((Input.GetKeyDown(KeyCode.W) /*|| UI_ACtivateFlamethrowerSkill*/) && isFlamethrowerSkillAvailable)
         {
             isFlamethrowerSkillAvailable = false;
             UI_ACtivateFlamethrowerSkill = false;
+            IsAnyAnimationPlaying = true;
             FlamethrowerSkill();
         }
         else if ((Input.GetKeyDown(KeyCode.E) /*|| UI_ACtivateFireBallSkill*/) && isFireBallSkillAvailable) 
         {           
             isFireBallSkillAvailable = false;
             UI_ACtivateFlamethrowerSkill = false;
+            IsAnyAnimationPlaying = true;
             FireBallSkill();
         }
         else if ((Input.GetKeyDown(KeyCode.S) /*|| UI_ACtivateSprintSkill*/) && isSprintSkillAvailable)
         {
             isSprintSkillAvailable = false;
             UI_ACtivateSprintSkill = false;
+            IsAnyAnimationPlaying = true;
             SprintBallSkill();
         }
     }
@@ -171,6 +181,7 @@ public class SkillsManager : MonoBehaviour
         Destroy(skill, skill.GetComponent<Animation>().clip.length + 0.1f);
         yield return new WaitForSeconds(skill.GetComponent<Animation>().clip.length);
         PlayerController.GravityState = true;
+        IsAnyAnimationPlaying = false;
     }
 
     private IEnumerator InstatiateSkillWithoutAnimation(GameObject skillPrefb, float waitToActive = 0.5f, float delayToDestroitObject = 1f)
@@ -183,6 +194,7 @@ public class SkillsManager : MonoBehaviour
         Destroy(skill, delayToDestroitObject + 0.1f);
         yield return new WaitForSeconds(delayToDestroitObject);
         PlayerController.GravityState = true;
+        IsAnyAnimationPlaying = false;
     }
 
     private IEnumerator SprintSkillfloat (float waitToActive = 0, float delayToDestroitObject = 5f) 
@@ -200,6 +212,7 @@ public class SkillsManager : MonoBehaviour
         Time.timeScale = tiemScale;
         Myanimator.SetBool("Sprint", false);
         PlayerController.GravityState = true;
+        IsAnyAnimationPlaying = false;
     }
 
 
