@@ -23,8 +23,8 @@ public class TornadoSpawner : MonoBehaviour
             GameObject tornado = Instantiate(TornadosPrefabs[Random.Range(0, TornadosPrefabs.Length)], Pos, Quaternion.identity);
             tornado.transform.SetParent(transform);
             Destroy(tornado, delayToDestroyTornado);
-            StartCoroutine(SpawnTornado());
         }
+        StartCoroutine(SpawnTornado());
     } 
 
 }

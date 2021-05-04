@@ -39,6 +39,7 @@ public class SkillsManager : MonoBehaviour
     public static bool UI_ACtivateSprintSkill;
 
     Animator Myanimator;
+    //UIManager myUIManager;
 
     private bool IsAnyAnimationPlaying;
 
@@ -51,10 +52,10 @@ public class SkillsManager : MonoBehaviour
         isFireBallSkillAvailable = true;
         isSprintSkillAvailable = true;
 
-        //UI_ACtivateBiteSkill = false;
-        //UI_ACtivateFireBallSkill = false;
-        //UI_ACtivateFlamethrowerSkill = false;
-        //UI_ACtivateSprintSkill = false;
+        UI_ACtivateBiteSkill = false;
+        UI_ACtivateFireBallSkill = false;
+        UI_ACtivateFlamethrowerSkill = false;
+        UI_ACtivateSprintSkill = false;
 
         BiteSkillTimer = 0;
         FlamethrowerSkillTimer = 0;
@@ -62,6 +63,8 @@ public class SkillsManager : MonoBehaviour
         SprintSkillTimer = 0;
 
         Myanimator = GetComponent<Animator>();
+        //myUIManager = FindObjectOfType<UIManager>();
+
     }
 
     void Update()
@@ -78,6 +81,7 @@ public class SkillsManager : MonoBehaviour
         if (!isBiteSkillAvailable) 
         {
             BiteSkillTimer += Time.deltaTime;
+            //myUIManager.BiteSkillImageFill(FlamethrowerSkillTimer/BiteCooldown);
             if (BiteSkillTimer >= BiteCooldown) 
             {
                 BiteSkillTimer = 0;
@@ -88,6 +92,7 @@ public class SkillsManager : MonoBehaviour
         if (!isFlamethrowerSkillAvailable)
         {
             FlamethrowerSkillTimer += Time.deltaTime;
+            //myUIManager.FlamethrowerSkillImageFill(FlamethrowerSkillTimer/FlamethrowerCooldown);
             if (FlamethrowerSkillTimer >= FlamethrowerCooldown) 
             {
                 FlamethrowerSkillTimer = 0;
@@ -98,6 +103,7 @@ public class SkillsManager : MonoBehaviour
         if (!isFireBallSkillAvailable)
         {
             FireBallSkillTimer += Time.deltaTime;
+            //myUIManager.FireballSkillImageFill(FlamethrowerSkillTimer/FireBallCooldown);
             if (FireBallSkillTimer >= FireBallCooldown) 
             {
                 FireBallSkillTimer = 0;
@@ -108,6 +114,7 @@ public class SkillsManager : MonoBehaviour
         if (!isSprintSkillAvailable)
         {
             SprintSkillTimer += Time.deltaTime;
+            //myUIManager.SprintSkillImageFill(FlamethrowerSkillTimer/SprintCooldown);
             if (SprintSkillTimer >= SprintCooldown)
             {
                 SprintSkillTimer = 0;
@@ -120,28 +127,28 @@ public class SkillsManager : MonoBehaviour
     {
         if (IsAnyAnimationPlaying) { return; }
 
-        if ((Input.GetKeyDown(KeyCode.Q) /*|| UI_ACtivateBiteSkill*/) && isBiteSkillAvailable)
+        if ((Input.GetKeyDown(KeyCode.Q) || UI_ACtivateBiteSkill) && isBiteSkillAvailable)
         {
             isBiteSkillAvailable = false;
             UI_ACtivateBiteSkill = false;
             IsAnyAnimationPlaying = true;
             BiteSkill();
         }
-        else if ((Input.GetKeyDown(KeyCode.W) /*|| UI_ACtivateFlamethrowerSkill*/) && isFlamethrowerSkillAvailable)
+        else if ((Input.GetKeyDown(KeyCode.W) || UI_ACtivateFlamethrowerSkill) && isFlamethrowerSkillAvailable)
         {
             isFlamethrowerSkillAvailable = false;
             UI_ACtivateFlamethrowerSkill = false;
             IsAnyAnimationPlaying = true;
             FlamethrowerSkill();
         }
-        else if ((Input.GetKeyDown(KeyCode.E) /*|| UI_ACtivateFireBallSkill*/) && isFireBallSkillAvailable) 
-        {           
+        else if ((Input.GetKeyDown(KeyCode.E) || UI_ACtivateFireBallSkill) && isFireBallSkillAvailable) 
+        {
             isFireBallSkillAvailable = false;
-            UI_ACtivateFlamethrowerSkill = false;
+            UI_ACtivateFireBallSkill = false;
             IsAnyAnimationPlaying = true;
             FireBallSkill();
         }
-        else if ((Input.GetKeyDown(KeyCode.S) /*|| UI_ACtivateSprintSkill*/) && isSprintSkillAvailable)
+        else if ((Input.GetKeyDown(KeyCode.S) || UI_ACtivateSprintSkill) && isSprintSkillAvailable)
         {
             isSprintSkillAvailable = false;
             UI_ACtivateSprintSkill = false;
