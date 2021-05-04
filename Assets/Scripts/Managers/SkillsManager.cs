@@ -11,19 +11,23 @@ public class SkillsManager : MonoBehaviour
     [SerializeField] GameObject FlamethrowerEffectPrefab;
     [SerializeField] GameObject FireBallEffectPrefab;
     [SerializeField] GameObject BiteEffectPrefab;
+    [SerializeField] GameObject SprintEffectPrefab;
 
     [Header("Skills Colldowns")]
     [SerializeField] float BiteCooldown = 1;
     [SerializeField] float FlamethrowerCooldown = 5;
     [SerializeField] float FireBallCooldown = 3;
+    [SerializeField] float SprintCooldown = 6;
 
     private float BiteSkillTimer;
     private float FlamethrowerSkillTimer;
     private float FireBallSkillTimer;
+    private float SprintSkillTimer;
 
     public static bool isBiteSkillAvailable;
     public static bool isFlamethrowerSkillAvailable;
     public static bool isFireBallSkillAvailable;
+    public static bool isSprintSkillAvailable;
 
     /// <summary>
     /// Variables To Activated Skills With the UI Buttons
@@ -32,7 +36,7 @@ public class SkillsManager : MonoBehaviour
     public static bool UI_ACtivateBiteSkill;
     public static bool UI_ACtivateFireBallSkill;
     public static bool UI_ACtivateFlamethrowerSkill;
-
+    public static bool UI_ACtivateSprintSkill;
 
     Animator Myanimator;
 
@@ -41,14 +45,17 @@ public class SkillsManager : MonoBehaviour
         isBiteSkillAvailable = true;
         isFlamethrowerSkillAvailable = true;
         isFireBallSkillAvailable = true;
+        isSprintSkillAvailable = true;
 
         //UI_ACtivateBiteSkill = false;
         //UI_ACtivateFireBallSkill = false;
         //UI_ACtivateFlamethrowerSkill = false;
+        //UI_ACtivateSprintSkill = false;
 
         BiteSkillTimer = 0;
         FlamethrowerSkillTimer = 0;
         FireBallSkillTimer = 0;
+        SprintSkillTimer = 0;
 
         Myanimator = GetComponent<Animator>();
     }
@@ -93,6 +100,16 @@ public class SkillsManager : MonoBehaviour
                 isFireBallSkillAvailable = true; 
             }
         }
+
+        if (!isSprintSkillAvailable)
+        {
+            SprintSkillTimer += Time.deltaTime;
+            if (SprintSkillTimer >= SprintCooldown)
+            {
+                SprintSkillTimer = 0;
+                isSprintSkillAvailable = true;
+            }
+        }
     }
 
     private void ManageSkillsImputs() 
@@ -115,6 +132,12 @@ public class SkillsManager : MonoBehaviour
             UI_ACtivateFlamethrowerSkill = false;
             FireBallSkill();
         }
+        else if ((Input.GetKeyDown(KeyCode.S) /*|| UI_ACtivateSprintSkill*/) && isSprintSkillAvailable)
+        {
+            isSprintSkillAvailable = false;
+            UI_ACtivateSprintSkill = false;
+            SprintBallSkill();
+        }
     }
 
     private void BiteSkill() 
@@ -131,6 +154,11 @@ public class SkillsManager : MonoBehaviour
     {
         Myanimator.SetTrigger("FireBall");
         StartCoroutine(InstatiateSkillWithoutAnimation(FireBallEffectPrefab,1.28f, 0.8f));
+    }
+    private void SprintBallSkill()
+    {
+        Myanimator.SetBool("Sprint",true);
+        StartCoroutine(SprintSkillfloat());
     }
 
     private IEnumerator InstatiateSkillWithAnimation(GameObject skillPrefb, float waitToActive = 0.5f) 
@@ -154,6 +182,23 @@ public class SkillsManager : MonoBehaviour
         skill.transform.SetParent(SkillOriginPoint.transform);
         Destroy(skill, delayToDestroitObject + 0.1f);
         yield return new WaitForSeconds(delayToDestroitObject);
+        PlayerController.GravityState = true;
+    }
+
+    private IEnumerator SprintSkillfloat (float waitToActive = 0, float delayToDestroitObject = 5f) 
+    {
+        PlayerController.GravityState = false;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        float tiemScale = Time.timeScale;
+        Time.timeScale = 2f;
+        yield return new WaitForSeconds(waitToActive);
+        Vector3 Pos = new Vector3(SkillOriginPoint.transform.position.x, SkillOriginPoint.transform.position.y, SkillOriginPoint.transform.position.z + 1);
+        GameObject skill = Instantiate(SprintEffectPrefab, Pos, Quaternion.identity);
+        skill.transform.SetParent(SkillOriginPoint.transform);
+        Destroy(skill, delayToDestroitObject + 0.1f);
+        yield return new WaitForSeconds(delayToDestroitObject);
+        Time.timeScale = tiemScale;
+        Myanimator.SetBool("Sprint", false);
         PlayerController.GravityState = true;
     }
 
