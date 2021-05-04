@@ -11,7 +11,7 @@ public class Tornado : MonoBehaviour
             transform.Translate(-Vector3.forward * (Random.Range(Ground.Speed * 3, Ground.Speed * 15)) * Time.deltaTime);
         }
 
-        if (transform.position.x < -160)
+        if (transform.position.z < -160)
         {
             Destroy(gameObject);
         }
