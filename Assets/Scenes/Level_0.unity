@@ -1633,6 +1633,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2588406527641082731, guid: 0bc04abdad58a8c4da0ab64e48872703, type: 3}
     - target: {fileID: 8804275759730917257, guid: 937b941833aa49e49bd58694d4965675, type: 3}
+      propertyPath: SprintEffectPrefab
+      value: 
+      objectReference: {fileID: 5935971049314519380, guid: f7024a7afb791a5498e71bc2554118cd, type: 3}
+    - target: {fileID: 8804275759730917257, guid: 937b941833aa49e49bd58694d4965675, type: 3}
       propertyPath: FireBallEffectPrefab
       value: 
       objectReference: {fileID: 2355852322815216225, guid: dec1a09383bc5d64cbd6a47b52ce5411, type: 3}
