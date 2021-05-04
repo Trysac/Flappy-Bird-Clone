@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] int CountDownTime = 3;
 
+    [Header("Environment")]
+    [SerializeField] GameObject rainPrefab;
+    float RainEnableDelay;
+
     public static bool isGameActive { get; set; }
     public static int Score { get; set; }
     public static bool IsGameStarted { get; set; }
@@ -28,6 +32,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        RainEnableDelay = Random.Range(timeBetweenTimeScaleIncreses * 2, timeBetweenTimeScaleIncreses * 4);
+        rainPrefab.SetActive(false);
+
         Score = 0;
         isGameActive = true;
         IsGameStarted = false;
@@ -43,6 +50,7 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<GroundSpawner>().SpawnInitialPlatforms();
         StartCoroutine(AddScoreForFlying());
         StartCoroutine(IncreseDificulty());
+        StartCoroutine(EnableRain());
     }
 
     void Update()
@@ -78,7 +86,12 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(IncreseDificulty());
     }
-
+    private IEnumerator EnableRain()
+    {
+        yield return new WaitForSeconds(RainEnableDelay);
+        rainPrefab.SetActive(true);
+        TornadoSpawner.ActivateTornadoSpawner = true;
+    }
 
     //It's call from other classes, like the "Watch", "Coins", etc.
     public static void DecreseDificulty(float decrese) 
@@ -90,5 +103,7 @@ public class GameManager : MonoBehaviour
     {
         Score += pointsToAdd;
     }
+
+
 
 }
