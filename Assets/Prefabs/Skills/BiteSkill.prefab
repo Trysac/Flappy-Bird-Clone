@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2588406526207754287}
   - component: {fileID: 2588406526207754256}
   - component: {fileID: 2588406526207754257}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 'Effect_36_Slash '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4899,7 +4899,7 @@ GameObject:
   - component: {fileID: 2588406527045948951}
   - component: {fileID: 2588406527045948953}
   - component: {fileID: 2588406527045948952}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Effect_36_Slash_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9782,7 +9782,7 @@ GameObject:
   - component: {fileID: 2588406527464559184}
   - component: {fileID: 2588406527464559186}
   - component: {fileID: 2588406527464559185}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Effect_36_Slash_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14664,7 +14664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2588406527641082730}
   - component: {fileID: 3253942387430515839}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BiteSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14791,7 +14791,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2588406527780407179}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Effect_36_SlashSet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

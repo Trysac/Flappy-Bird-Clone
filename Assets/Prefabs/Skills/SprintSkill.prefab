@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4843717527020952718}
   - component: {fileID: 4843717527020952717}
   - component: {fileID: 4843717527020952716}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Effect_19_BreathFireSphere_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3670,7 +3670,7 @@ ParticleSystem:
   CollisionModule:
     enabled: 0
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -4884,7 +4884,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9156280946855857665}
   - component: {fileID: 7501689877052770926}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SprintSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}

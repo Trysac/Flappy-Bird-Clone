@@ -8,6 +8,7 @@ public class MonsterPlant : Enemy
     [SerializeField] float biteAttackRange = 1.5f;
     [SerializeField] float distanceAttackRange = 6.5f;
     [SerializeField] float IdleBattleStanceRange = 9f;
+    [SerializeField] bool canBiteThePlayer = true;
 
     Animator myAnimator;
 
@@ -48,7 +49,10 @@ public class MonsterPlant : Enemy
     }
     private void BiteAttack() 
     {
-        myAnimator.SetTrigger("Bite");
+        if (canBiteThePlayer) 
+        { 
+            myAnimator.SetTrigger("Bite");
+        }     
     }
     private void IdleBattleStance() 
     {
