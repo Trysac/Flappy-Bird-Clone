@@ -51,6 +51,10 @@ public class ObjectMove : MonoBehaviour
         {
             Destroy(gameObject, 0.1f);
         }
+        if (hit.collider.gameObject.tag.Equals("Enemy")) 
+        {
+            //hit.transform.GetComponent<Bat>().Hit();
+        }
     }
 
 }

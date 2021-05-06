@@ -18,23 +18,22 @@ public class Bat : Enemy
 
     void Update()
     {
-        if (GameManager.isGameActive && GameManager.IsGameStarted) 
+        if (GameManager.isGameActive) 
         {
-            Fly();
+            if(GameManager.IsGameStarted){ Fly();}   
         }
         else 
         {
             if (IsAlive) 
             { 
                 myAnimator.SetTrigger("Victory");
-            }
-            
+            }     
         }
     }
 
     private void Fly() 
     {
-        transform.Translate(-Vector3.forward * flySpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * flySpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -43,12 +42,13 @@ public class Bat : Enemy
         {
             myAnimator.SetTrigger("Attack");
         }
+    }
 
-        if (collision.gameObject.tag.Equals("PlayerAttack"))
-        {
-            myAnimator.SetTrigger("Hit");
-            Die();
-        }
+    public void Hit() 
+    {
+        print("si");
+        myAnimator.SetTrigger("Hit");
+        Die();
     }
 
     protected override void Die() 
