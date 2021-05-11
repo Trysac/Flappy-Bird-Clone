@@ -2741,6 +2741,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 57561931476664784, guid: f2ed7e2c123557744889931283a4c695, type: 3}
+      propertyPath: goldCoinSpawnProbability
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 57561931476664784, guid: f2ed7e2c123557744889931283a4c695, type: 3}
+      propertyPath: bronceCoinSpawnProbability
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 6872357415951745548, guid: f2ed7e2c123557744889931283a4c695, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7529669085437966788, guid: f2ed7e2c123557744889931283a4c695, type: 3}
       propertyPath: m_RootOrder
       value: 1
