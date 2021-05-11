@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public static bool isGameActive { get; set; }
     public static int Score { get; set; }
+    public static int Coins { get; set; }
     public static bool IsGameStarted { get; set; }
     public static int InitialCountDownTime { get; set; }
 
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
         rainPrefab.SetActive(false);
 
         Score = 0;
+        Coins = 0;
         isGameActive = true;
         IsGameStarted = false;
         InitialCountDownTime = CountDownTime;
@@ -102,6 +104,10 @@ public class GameManager : MonoBehaviour
     public static void AddScore(int pointsToAdd)
     {
         Score += pointsToAdd;
+    }
+    public static void AddCoins(int coinsToAdd)
+    {
+        Coins += coinsToAdd;
     }
 
 

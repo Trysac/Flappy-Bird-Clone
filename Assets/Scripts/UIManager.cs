@@ -42,7 +42,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         Score.text = GameManager.Score.ToString();
-        Coins.text = 0.ToString();
+        Coins.text = GameManager.Coins.ToString();
         ActivateSkillsButtons();
     }
 
