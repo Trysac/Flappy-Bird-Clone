@@ -1,0 +1,95 @@
+name: Test and build
+
+# Runs the EditMode tests and builds the WebGL player with GameCI.
+# Unity needs a license in CI: add the repository secrets UNITY_LICENSE (contents
+# of the .ulf/.xml license file), UNITY_EMAIL and UNITY_PASSWORD. Without them
+# the Unity steps are skipped. Publishing to GitHub Pages only runs when started
+# by hand with "deploy" checked.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: Publish the WebGL build to GitHub Pages
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+env:
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+  UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+  UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-24.04
+    outputs:
+      built: ${{ steps.license.outputs.available }}
+    steps:
+      - name: Check Unity license
+        id: license
+        run: |
+          if [ -n "$UNITY_LICENSE" ]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::UNITY_LICENSE is not set; skipping the Unity steps."
+            echo "available=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.license.outputs.available == 'true'
+
+      - uses: actions/cache@v4
+        if: steps.license.outputs.available == 'true'
+        with:
+          path: Library
+          key: library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: library-
+
+      - name: EditMode tests
+        if: steps.license.outputs.available == 'true'
+        uses: game-ci/unity-test-runner@v4
+        with:
+          testMode: editmode
+          artifactsPath: build/test-results
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build WebGL
+        if: steps.license.outputs.available == 'true'
+        uses: game-ci/unity-builder@v4
+        with:
+          targetPlatform: WebGL
+          buildsPath: build
+          versioning: None
+
+      - uses: actions/upload-artifact@v4
+        if: steps.license.outputs.available == 'true'
+        with:
+          name: webgl
+          path: build/WebGL/WebGL
+          if-no-files-found: error
+
+      - name: Package WebGL build for Pages
+        if: steps.license.outputs.available == 'true' && github.event_name == 'workflow_dispatch' && inputs.deploy
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/WebGL/WebGL
+
+  deploy:
+    if: github.event_name == 'workflow_dispatch' && inputs.deploy && needs.test-and-build.outputs.built == 'true'
+    needs: test-and-build
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
