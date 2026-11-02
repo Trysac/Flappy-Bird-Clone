@@ -8,13 +8,13 @@ namespace FlappyDragon.Game
 {
     /// <summary>
     /// Opt-in capture of README screenshots from a built player:
-    /// <c>FlappyDragon.exe -screenshot &lt;folder&gt; -scenario ready,playing,gameover</c>.
+    /// <c>FlappyDragon.exe -screenshot &lt;folder&gt; -scenario title,playing,gameover</c>.
     /// Without the -screenshot argument nothing is created, so normal runs and WebGL builds
     /// (which have no command line) are unaffected. Scenarios run in the order given.
     /// </summary>
     public sealed class ScreenshotScenarios : MonoBehaviour
     {
-        const string DefaultScenarios = "ready,playing,paused,gameover";
+        const string DefaultScenarios = "title,playing,fireball,storm,gameover";
 
         string folder;
         string[] scenarios;
@@ -54,6 +54,10 @@ namespace FlappyDragon.Game
             GameFlow flow = director.Flow;
             switch (scenario)
             {
+                case "title":
+                    GoToTitle(director);
+                    yield return new WaitForSecondsRealtime(1f);
+                    break;
                 case "ready":
                     RestartRun(director);
                     yield return new WaitForSecondsRealtime(0.8f);
@@ -61,20 +65,31 @@ namespace FlappyDragon.Game
                 case "playing":
                     yield return FlyFor(director, 14f);
                     break;
+                case "fireball":
+                    yield return FlyFor(director, 9f);
+                    director.Autopilot = false;
+                    director.StageFireballAtBat();
+                    // Keep flying level for the moment the fireball is in the air.
+                    director.Player.Flap();
+                    yield return new WaitForSecondsRealtime(0.18f);
+                    break;
+                case "storm":
+                    yield return FlyFor(director, 25f);
+                    break;
                 case "paused":
                     yield return FlyFor(director, 6f);
                     flow.TogglePause();
                     yield return new WaitForSecondsRealtime(0.3f);
                     break;
                 case "gameover":
-                    yield return FlyFor(director, 16f);
+                    yield return FlyFor(director, 22f);
                     director.Autopilot = false;
                     flow.Crash();
                     while (flow.Phase != GamePhase.GameOver)
                     {
                         yield return null;
                     }
-                    yield return new WaitForSecondsRealtime(0.4f);
+                    yield return new WaitForSecondsRealtime(0.6f);
                     break;
                 default:
                     Debug.LogWarning($"Unknown screenshot scenario '{scenario}'.");
@@ -105,6 +120,25 @@ namespace FlappyDragon.Game
             {
                 flow.StartRun();
             }
+        }
+
+        static void GoToTitle(GameDirector director)
+        {
+            director.Autopilot = false;
+            GameFlow flow = director.Flow;
+            if (flow.Phase == GamePhase.Ready)
+            {
+                flow.Launch();
+            }
+            if (flow.Phase == GamePhase.Playing)
+            {
+                flow.TogglePause();
+            }
+            if (flow.Phase == GamePhase.Crashed)
+            {
+                flow.ShowResults();
+            }
+            flow.ToTitle();
         }
 
         static string Argument(string name)

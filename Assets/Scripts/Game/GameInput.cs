@@ -34,6 +34,10 @@ namespace FlappyDragon.Game
             return Input.touchCount == 0 && Input.GetMouseButtonDown(0) && !isOverButton(Input.mousePosition);
         }
 
+        /// <summary>F, X, a right click, or the gamepad's west button.</summary>
+        public bool Fire() => Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.X) || Input.GetMouseButtonDown(1)
+            || Input.GetKeyDown(KeyCode.JoystickButton2);
+
         /// <summary>Escape, P, or the gamepad's start button.</summary>
         public bool Pause() => Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)
             || Input.GetKeyDown(KeyCode.JoystickButton7);

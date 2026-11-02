@@ -45,11 +45,25 @@
 
 .score {
     font-size: 84px;
+    transition-property: scale;
+    transition-duration: 0.12s;
     color: #ffffff;
     -unity-text-outline-width: 3px;
     -unity-text-outline-color: var(--ink);
     -unity-text-align: middle-center;
     text-shadow: 0 5px 0 rgba(59, 36, 20, 0.55);
+}
+
+.score--pop {
+    scale: 1.3 1.3;
+}
+
+.chip {
+    padding: 4px 12px;
+    border-radius: 14px;
+    background-color: rgba(59, 36, 20, 0.55);
+    color: #ffffff;
+    font-size: 20px;
 }
 
 .round-button {
@@ -88,6 +102,54 @@
 
 .screen--dim {
     background-color: rgba(30, 18, 10, 0.45);
+}
+
+.screen--title {
+    align-items: flex-end;
+    padding-right: 70px;
+}
+
+.title__panel {
+    width: 600px;
+    align-items: center;
+}
+
+.title--stacked {
+    font-size: 112px;
+    -unity-paragraph-spacing: 0;
+    margin-bottom: 8px;
+}
+
+.tagline {
+    font-size: 26px;
+    color: #ffffff;
+    -unity-text-outline-width: 2px;
+    -unity-text-outline-color: var(--ink);
+    -unity-text-align: middle-center;
+    margin-bottom: 22px;
+}
+
+.tagline--small {
+    font-size: 24px;
+    margin: 0 0 0 10px;
+}
+
+.title__best {
+    margin-top: 18px;
+}
+
+.controls {
+    margin-top: 22px;
+    padding: 8px 14px;
+    border-radius: 14px;
+    background-color: rgba(59, 36, 20, 0.5);
+}
+
+.controls__item {
+    color: var(--cream);
+    font-size: 19px;
+    margin: 2px 6px;
+    -unity-text-align: middle-center;
 }
 
 .screen--hint {
@@ -161,6 +223,12 @@
     border-color: var(--accent-dark);
 }
 
+.button--wide {
+    width: 320px;
+    height: 76px;
+    font-size: 36px;
+}
+
 .button--primary {
     background-color: var(--accent);
     color: #ffffff;
@@ -193,6 +261,22 @@
     -unity-text-align: middle-center;
 }
 
+.results__caption {
+    font-size: 20px;
+    color: var(--ink);
+    -unity-text-align: middle-center;
+    margin-top: 4px;
+}
+
+.results__caption--next {
+    color: var(--muted);
+    margin-bottom: 4px;
+}
+
+.results__value--small {
+    font-size: 40px;
+}
+
 .results__value {
     font-size: 54px;
     color: #ffffff;
@@ -208,4 +292,113 @@
     background-color: #e8432f;
     color: #ffffff;
     font-size: 18px;
+}
+
+/* ---- Medals: a coloured disc with a ribbon notch ---- */
+
+.medal {
+    width: 96px;
+    height: 96px;
+    margin: 6px 0;
+    border-radius: 48px;
+    border-width: 6px;
+    border-color: rgba(59, 36, 20, 0.25);
+    background-color: rgba(59, 36, 20, 0.12);
+}
+
+.medal__shine {
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    right: 14px;
+    bottom: 14px;
+    border-radius: 40px;
+    border-width: 4px;
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+.medal--small {
+    width: 34px;
+    height: 34px;
+    margin: 0;
+    border-width: 3px;
+    border-radius: 17px;
+}
+
+.medal--bronze {
+    background-color: #d0844a;
+    border-color: #8c4f22;
+}
+
+.medal--silver {
+    background-color: #d7dee6;
+    border-color: #8796a6;
+}
+
+.medal--gold {
+    background-color: #ffcc33;
+    border-color: #c08a00;
+}
+
+.medal--platinum {
+    background-color: #bff3ff;
+    border-color: #4fb3c9;
+}
+
+/* ---- Fire button (bottom right) ---- */
+
+.fire-button {
+    position: absolute;
+    right: 28px;
+    bottom: 28px;
+    width: 112px;
+    height: 112px;
+    border-radius: 56px;
+    border-width: 5px;
+    border-color: var(--ink);
+    background-color: rgba(59, 36, 20, 0.55);
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.fire-button__charge {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background-color: var(--accent);
+}
+
+.fire-button--ready .fire-button__charge {
+    background-color: #ffb43a;
+}
+
+.fire-button__label {
+    color: #ffffff;
+    font-size: 24px;
+    -unity-text-outline-width: 2px;
+    -unity-text-outline-color: var(--ink);
+    -unity-text-align: middle-center;
+}
+
+/* ---- Crash flash ---- */
+
+.flash {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffff;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.35s;
+}
+
+.flash--on {
+    opacity: 0.75;
+    transition-duration: 0s;
 }
