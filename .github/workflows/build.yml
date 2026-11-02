@@ -28,6 +28,9 @@ env:
 jobs:
   test-and-build:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      checks: write # the test runner publishes results as a check run
     outputs:
       built: ${{ steps.license.outputs.available }}
     steps:

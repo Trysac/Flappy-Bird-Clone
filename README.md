@@ -62,8 +62,8 @@ Unity -batchmode -projectPath . -runTests -testPlatform EditMode -testResults re
   on the current fall speed or the frame rate. Collisions are simple circle-versus-rectangle
   tests on the play plane.
 - **Fair random courses.** Each opening is placed inside the sky and never further from the
-  previous one than the dragon can climb or dive between gates; a test flies 2,000 planned
-  gates to prove it.
+  previous one than the dragon can climb or dive between gates; a test plans 2,000 gates
+  and checks that every opening stays in the sky and within that step limit.
 - **Everything is generated.** The dragon, bats, rocks, coins and landscape are flat-shaded
   meshes built in code (`LowPoly.cs`); materials, the scene, the app icon and the player
   settings come from an editor script (`ProjectBuilder.cs`); every sound and the music loop
