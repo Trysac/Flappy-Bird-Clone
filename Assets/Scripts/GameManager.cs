@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(CountDownTime);
         IsGameStarted = true;
         PlayerController.GravityState = true;
-        FindObjectOfType<GroundSpawner>().SpawnInitialPlatforms();
+        FindFirstObjectByType<GroundSpawner>().SpawnInitialPlatforms();
         StartCoroutine(AddScoreForFlying());
         StartCoroutine(IncreseDificulty());
         StartCoroutine(EnableRain());
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (FindObjectOfType<PlayerController>() != null) 
+        if (FindFirstObjectByType<PlayerController>() != null) 
         { 
             isGameActive = PlayerController.isAlive;
         }
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         {
             StopCoroutine(AddScoreForFlying());
             StopCoroutine(IncreseDificulty());
-            FindObjectOfType<UIManager>().EnableGameOverPanel();
+            FindFirstObjectByType<UIManager>().EnableGameOverPanel();
         }
     }
 

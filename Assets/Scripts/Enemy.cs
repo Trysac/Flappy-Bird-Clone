@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        player = FindObjectOfType<PlayerController>();
+        player = FindFirstObjectByType<PlayerController>();
     }
 
     protected virtual void Die() { }

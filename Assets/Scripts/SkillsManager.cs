@@ -181,7 +181,7 @@ public class SkillsManager : MonoBehaviour
     private IEnumerator InstatiateSkillWithAnimation(GameObject skillPrefb, float waitToActive = 0.5f) 
     {
         PlayerController.GravityState = false;
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
         yield return new WaitForSeconds(waitToActive);
         GameObject skill = Instantiate(skillPrefb, SkillOriginPoint.transform.position, Quaternion.identity);
         skill.transform.SetParent(SkillOriginPoint.transform);
@@ -194,7 +194,7 @@ public class SkillsManager : MonoBehaviour
     private IEnumerator InstatiateSkillWithoutAnimation(GameObject skillPrefb, float waitToActive = 0.5f, float delayToDestroitObject = 1f)
     {
         PlayerController.GravityState = false;
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
         yield return new WaitForSeconds(waitToActive);
         GameObject skill = Instantiate(skillPrefb, SkillOriginPoint.transform.position, Quaternion.identity);
         skill.transform.SetParent(SkillOriginPoint.transform);
@@ -207,7 +207,7 @@ public class SkillsManager : MonoBehaviour
     private IEnumerator SprintSkillfloat (float waitToActive = 0, float delayToDestroitObject = 5f) 
     {
         PlayerController.GravityState = false;
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
         float tiemScale = Time.timeScale;
         Time.timeScale = 2f;
         yield return new WaitForSeconds(waitToActive);
