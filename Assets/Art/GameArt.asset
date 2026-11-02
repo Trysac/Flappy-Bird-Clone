@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef5582b862e2134d81ab6bbd3a85d7e, type: 3}
+  m_Name: GameArt
+  m_EditorClassIdentifier: FlappyDragon.Game::FlappyDragon.Game.GameArt
+  DragonScales: {fileID: 2100000, guid: 2fc95c6d0a0018f42a70727b3423ab6f, type: 2}
+  DragonBelly: {fileID: 2100000, guid: b1fae3110cb1ab64da1be933e07a301e, type: 2}
+  DragonWing: {fileID: 2100000, guid: 7697c7c48167d96429a6de08e29b97b9, type: 2}
+  DragonHorn: {fileID: 2100000, guid: 024d78fcc4bfc13439e03b944e5b562e, type: 2}
+  EyeWhite: {fileID: 2100000, guid: a27794e38c0135b4589c31ea104b0622, type: 2}
+  EyeDark: {fileID: 2100000, guid: 7dbbc97abc8d38147a347b6b190ba23e, type: 2}
+  Rock: {fileID: 2100000, guid: a8997abb706515949b1293a1fe51fdaa, type: 2}
+  RockDark: {fileID: 2100000, guid: bc29eebed7a292041baa5973241c0de6, type: 2}
+  Grass: {fileID: 2100000, guid: 46c1e3a2ac28402408767774f728997d, type: 2}
+  Dirt: {fileID: 2100000, guid: 745ede7eabd652f4997fc2eae35e7fea, type: 2}
+  HillNear: {fileID: 2100000, guid: ef4c759e689816147af4f4753d39d482, type: 2}
+  MountainFar: {fileID: 2100000, guid: 4c8ff21f03746a74eaf6b5a95fc3717c, type: 2}
+  Snow: {fileID: 2100000, guid: a896fbf2b73a487458f54567197bb48a, type: 2}
+  Cloud: {fileID: 2100000, guid: fbfd1111c1474724fa75ef2ad1937a1d, type: 2}
+  CoinBronze: {fileID: 2100000, guid: 4b70c30e9a028e5418f2758eed526406, type: 2}
+  CoinSilver: {fileID: 2100000, guid: 21ebe4ed7dc7f4e489ac41096990d3c1, type: 2}
+  CoinGold: {fileID: 2100000, guid: 97f4238f9e59809469b0f1a7e18b6644, type: 2}
+  Bat: {fileID: 2100000, guid: 75956f77829eb92498bd4e52b72ac394, type: 2}
+  BatWing: {fileID: 2100000, guid: d99065d28e23e75479533afda3ccab21, type: 2}
+  Fire: {fileID: 2100000, guid: 2880e30b60aa80c4491ef8a7e102fc40, type: 2}
+  ParticleAdditive: {fileID: 2100000, guid: 7b9bf1a98bda73345b324c22d0ca0d34, type: 2}
+  ParticleAlpha: {fileID: 2100000, guid: 615c08fe85843924ca18be5e78765e72, type: 2}
+  Flap: {fileID: 8300000, guid: 8d0fb5051552d334cad368cd45abf193, type: 3}
+  Point: {fileID: 8300000, guid: a401cf695b48532429972bf722d25d57, type: 3}
+  Coin: {fileID: 8300000, guid: ba5a0443586ae3f4a8ef733a829ac7be, type: 3}
+  Hit: {fileID: 8300000, guid: 99b55d8aaf1bd1b43a417ac103ddc51e, type: 3}
+  Fall: {fileID: 8300000, guid: 02d5290fa18626c4d8a7d5713677de62, type: 3}
+  Fireball: {fileID: 8300000, guid: 5c89b2da2dd66e74c880f16c3a3a39da, type: 3}
+  Burst: {fileID: 8300000, guid: cc0ffc2a613db9f4a8d8f665e680176c, type: 3}
+  Medal: {fileID: 8300000, guid: 9b5ce885feef8ed44977035ca5feacb7, type: 3}
+  Click: {fileID: 8300000, guid: f5884c2f2afd926418372e17cf706a32, type: 3}
+  Music: {fileID: 8300000, guid: bfed6dc599242804fa62523f4c694acd, type: 3}

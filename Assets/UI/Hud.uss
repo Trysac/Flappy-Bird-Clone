@@ -1,0 +1,211 @@
+/*
+ * Bright storybook HUD: cream cards with a warm brown outline, chunky outlined numbers.
+ * Designed at 1280x720 reference pixels; the panel settings scale it to the screen.
+ */
+
+:root {
+    --ink: #3b2414;
+    --cream: #fff4dc;
+    --cream-dark: #f1dcb1;
+    --accent: #f27a2e;
+    --accent-dark: #b9501a;
+    --muted: #8a6a4c;
+    --gold: #f5c542;
+
+    color: var(--ink);
+    font-size: 22px;
+    -unity-font-style: bold;
+}
+
+.hud {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* ---- Top bar ---- */
+
+.top-bar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 18px 24px 0 24px;
+}
+
+.top-bar__side {
+    width: 160px;
+    flex-direction: row;
+}
+
+.top-bar__side--right {
+    justify-content: flex-end;
+}
+
+.score {
+    font-size: 84px;
+    color: #ffffff;
+    -unity-text-outline-width: 3px;
+    -unity-text-outline-color: var(--ink);
+    -unity-text-align: middle-center;
+    text-shadow: 0 5px 0 rgba(59, 36, 20, 0.55);
+}
+
+.round-button {
+    width: 64px;
+    height: 64px;
+    border-radius: 32px;
+    border-width: 4px;
+    border-color: var(--ink);
+    background-color: var(--cream);
+    color: var(--ink);
+    font-size: 26px;
+    margin: 0;
+    padding: 0;
+    -unity-text-align: middle-center;
+}
+
+.round-button:hover {
+    background-color: #ffffff;
+}
+
+.round-button:active {
+    background-color: var(--cream-dark);
+}
+
+/* ---- Screens ---- */
+
+.screen {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.screen--dim {
+    background-color: rgba(30, 18, 10, 0.45);
+}
+
+.screen--hint {
+    justify-content: flex-end;
+    padding-bottom: 150px;
+}
+
+.hidden {
+    display: none;
+}
+
+.card {
+    min-width: 420px;
+    padding: 26px 40px 30px 40px;
+    border-radius: 26px;
+    border-width: 5px;
+    border-color: var(--ink);
+    background-color: var(--cream);
+    align-items: stretch;
+}
+
+.title {
+    font-size: 96px;
+    color: var(--gold);
+    -unity-text-outline-width: 4px;
+    -unity-text-outline-color: var(--ink);
+    -unity-text-align: middle-center;
+    text-shadow: 0 6px 0 rgba(59, 36, 20, 0.6);
+}
+
+.title--small {
+    font-size: 56px;
+    margin-bottom: 14px;
+}
+
+.hint {
+    font-size: 28px;
+    color: #ffffff;
+    -unity-text-outline-width: 2px;
+    -unity-text-outline-color: var(--ink);
+    -unity-text-align: middle-center;
+}
+
+.row {
+    flex-direction: row;
+    align-items: center;
+}
+
+/* ---- Buttons ---- */
+
+.button {
+    height: 64px;
+    margin: 8px 0 0 0;
+    border-radius: 18px;
+    border-width: 4px;
+    border-color: var(--ink);
+    background-color: var(--cream-dark);
+    color: var(--ink);
+    font-size: 28px;
+    -unity-text-align: middle-center;
+}
+
+.button:hover,
+.button:focus {
+    background-color: #ffffff;
+}
+
+/* Keyboard and gamepad focus: a thick warm outline instead of the default blue. */
+.hud .button:focus,
+.hud .round-button:focus {
+    border-color: var(--accent-dark);
+}
+
+.button--primary {
+    background-color: var(--accent);
+    color: #ffffff;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: var(--accent-dark);
+}
+
+.button--primary:hover,
+.button--primary:focus {
+    background-color: #ff9550;
+}
+
+/* ---- Results ---- */
+
+.results {
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.results__column {
+    align-items: center;
+    min-width: 150px;
+    margin: 0 10px;
+}
+
+.results__label {
+    font-size: 22px;
+    color: var(--muted);
+    -unity-text-align: middle-center;
+}
+
+.results__value {
+    font-size: 54px;
+    color: #ffffff;
+    -unity-text-outline-width: 2px;
+    -unity-text-outline-color: var(--ink);
+    -unity-text-align: middle-center;
+}
+
+.badge {
+    margin-left: 8px;
+    padding: 2px 8px;
+    border-radius: 8px;
+    background-color: #e8432f;
+    color: #ffffff;
+    font-size: 18px;
+}

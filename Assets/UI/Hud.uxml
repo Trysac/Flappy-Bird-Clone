@@ -1,0 +1,46 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="hud" class="hud" picking-mode="Ignore">
+        <!-- Always visible while flying. -->
+        <ui:VisualElement class="top-bar" picking-mode="Ignore">
+            <ui:VisualElement class="top-bar__side" picking-mode="Ignore" />
+            <ui:Label name="score" text="0" class="score" picking-mode="Ignore" />
+            <ui:VisualElement class="top-bar__side top-bar__side--right" picking-mode="Ignore">
+                <ui:Button name="pause-button" text="II" class="round-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Waiting for the first flap. -->
+        <ui:VisualElement name="ready" class="screen screen--hint" picking-mode="Ignore">
+            <ui:Label text="Get ready!" class="title title--small" picking-mode="Ignore" />
+            <ui:Label text="Tap, click or press Space to flap" class="hint" picking-mode="Ignore" />
+        </ui:VisualElement>
+
+        <ui:VisualElement name="pause" class="screen screen--dim">
+            <ui:VisualElement class="card">
+                <ui:Label text="Paused" class="title title--small" />
+                <ui:Button name="resume-button" text="Resume" class="button button--primary" />
+                <ui:Button name="restart-button" text="Restart" class="button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="game-over" class="screen screen--dim">
+            <ui:VisualElement class="card">
+                <ui:Label text="Game over" class="title title--small" />
+                <ui:VisualElement class="results">
+                    <ui:VisualElement class="results__column">
+                        <ui:Label text="Score" class="results__label" />
+                        <ui:Label name="final-score" text="0" class="results__value" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="results__column">
+                        <ui:VisualElement class="row">
+                            <ui:Label text="Best" class="results__label" />
+                            <ui:Label name="new-best" text="NEW" class="badge" />
+                        </ui:VisualElement>
+                        <ui:Label name="best-score" text="0" class="results__value" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:Button name="retry-button" text="Fly again" class="button button--primary" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
