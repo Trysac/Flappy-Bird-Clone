@@ -9,6 +9,9 @@ namespace FlappyDragon.Game
     [RequireComponent(typeof(UIDocument))]
     public sealed class Hud : MonoBehaviour
     {
+        // Delay before the results screen takes keyboard and gamepad focus.
+        const long ResultsFocusDelayMs = 600;
+
         static readonly string[] MedalClasses = { "medal--bronze", "medal--silver", "medal--gold", "medal--platinum" };
 
         VisualElement root;
@@ -89,7 +92,21 @@ namespace FlappyDragon.Game
                 : phase == GamePhase.Paused ? "resume-button"
                 : phase == GamePhase.GameOver ? "retry-button"
                 : null;
-            if (focusName != null)
+            if (phase == GamePhase.GameOver)
+            {
+                // A flap key still held from the crash would submit "Fly again"
+                // at once and skip the results, so focus the button a moment later.
+                root.focusController?.focusedElement?.Blur();
+                Button retry = root.Q<Button>(focusName);
+                root.schedule.Execute(() =>
+                {
+                    if (retry.resolvedStyle.display != DisplayStyle.None)
+                    {
+                        retry.Focus();
+                    }
+                }).ExecuteLater(ResultsFocusDelayMs);
+            }
+            else if (focusName != null)
             {
                 root.Q<Button>(focusName).Focus();
             }
