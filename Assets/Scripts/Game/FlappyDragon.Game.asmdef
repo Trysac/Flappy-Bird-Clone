@@ -1,0 +1,16 @@
+{
+    "name": "FlappyDragon.Game",
+    "rootNamespace": "FlappyDragon.Game",
+    "references": [
+        "FlappyDragon.Core"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
