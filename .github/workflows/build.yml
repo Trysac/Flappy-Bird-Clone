@@ -37,10 +37,10 @@ jobs:
       - name: Check Unity license
         id: license
         run: |
-          if [ -n "$UNITY_LICENSE" ]; then
+          if [ -n "$UNITY_LICENSE" ] && [ -n "$UNITY_EMAIL" ] && [ -n "$UNITY_PASSWORD" ]; then
             echo "available=true" >> "$GITHUB_OUTPUT"
           else
-            echo "::notice::UNITY_LICENSE is not set; skipping the Unity steps."
+            echo "::notice::UNITY_LICENSE, UNITY_EMAIL and UNITY_PASSWORD are not all set; skipping the Unity steps."
             echo "available=false" >> "$GITHUB_OUTPUT"
           fi
 
