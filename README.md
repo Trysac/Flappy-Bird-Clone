@@ -10,6 +10,16 @@ grab coins, burn bats with fireballs and chase medals and your best score as the
 | ![Title screen](docs/screenshots/title.png) | ![A fireball on its way to a bat](docs/screenshots/fireball.png) |
 | ![Results with a silver medal and a new best score](docs/screenshots/gameover.png) | |
 
+## Play it
+
+- **In your browser:** [trysac.github.io/Flappy-Bird-Clone](https://trysac.github.io/Flappy-Bird-Clone/)
+- **On itch.io:** [trysac.itch.io/flappy-dragon](https://trysac.itch.io/flappy-dragon)
+- **Get the code:** fork this repository, or clone it:
+
+  ```bash
+  git clone https://github.com/Trysac/Flappy-Bird-Clone.git
+  ```
+
 ## Run it
 
 1. Install **Unity 6000.3.27f1 (Unity 6 LTS)** with Unity Hub (add the Windows or Web build
