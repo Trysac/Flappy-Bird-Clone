@@ -46,6 +46,16 @@ namespace FlappyDragon.EditorTools
             Debug.Log("Flappy Dragon project set up.");
         }
 
+        /// <summary>
+        /// Enters play mode and lets ScreenshotScenarios capture the README screenshots, then exits.
+        /// Run in batch mode without -quit: <c>-executeMethod ...CaptureScreenshots -screenshot &lt;folder&gt;</c>.
+        /// </summary>
+        public static void CaptureScreenshots()
+        {
+            EditorSceneManager.OpenScene(ScenePath);
+            EditorApplication.isPlaying = true;
+        }
+
         public static void BuildWindows() => Build(BuildTarget.StandaloneWindows64, "FlappyDragon.exe");
 
         public static void BuildWebGL() => Build(BuildTarget.WebGL, string.Empty);
