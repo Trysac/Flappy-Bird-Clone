@@ -3,6 +3,8 @@
 A low-poly 3D take on Flappy Bird, built with Unity: flap a little dragon through rock gates,
 grab coins, burn bats with fireballs and chase medals and your best score as the course speeds up.
 
+![Gameplay](docs/media/gameplay.gif)
+
 ![Flying through the rock gates](docs/screenshots/playing.png)
 
 | | |
